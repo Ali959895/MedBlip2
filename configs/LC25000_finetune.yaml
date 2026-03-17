@@ -1,0 +1,227 @@
+# HAM10000 fine-tuning config (v3)
+# - Supports BLIP / BLIP-2 / CLIP benchmarking
+# - Supports partial ViT fine-tuning (unfreeze last N blocks)
+# - AdamW + cosine + warmup
+# - CE + balanced class weights + label smoothing
+# - Per-epoch metrics + save-best by f1_macro
+
+run:
+  name: LC25000_v3_blip2opt_eva_g14
+
+output_root: /scratch/${USER}/lc25000_runs
+device: cuda
+
+data:
+  img_root: /scratch/ali95/LC25000
+  train_csv: /scratch/ali95/LC25000/train.csv
+  val_csv: /scratch/ali95/LC25000/val.csv
+  test_csv: /scratch/ali95/LC25000/test.csv
+
+  num_classes: 5
+  classes:
+    - colon_aca
+    - colon_n
+    - lung_aca
+    - lung_n
+    - lung_scc
+  # Optional: override column names (otherwise auto-detected)
+  # image_col: image
+  # label_col: dx
+
+  image_size: 224
+  num_workers: 4
+  pin_memory: true
+
+  # Conservative augmentations (tune if needed)
+  augment:
+    random_resized_crop_scale: [0.75, 1.0]
+    hflip: true
+    vflip: true
+    rotation: 15
+    color_jitter: [0.15, 0.15, 0.15, 0.03]
+    # mean/std default to ImageNet if omitted
+    # mean: [0.485, 0.456, 0.406]
+    # std:  [0.229, 0.224, 0.225]
+
+model:
+  # Which backbone to run in train_multiclass / eval_multiclass:
+  #   blip2_opt, blip2_t5, blip2_feature_extractor, blip_feature_extractor, clip
+  arch: blip2_opt
+
+  # Generic classifier knobs (applies to our wrappers)
+  pooling: mean           # mean | cls
+  head_hidden: 512        # 0 -> linear
+  activation: silu        # relu | gelu | silu | tanh | none
+  dropout: 0.09 #0.2
+
+  # BLIP / BLIP-2 knobs (LAVIS)
+  lavis_name: blip2_opt
+  model_type: pretrain_opt2.7b
+
+  train_qformer: true
+  train_vision: true
+  unfreeze_vision_last_n: 2   # if >0, only last N ViT blocks are trainable
+
+  # CLIP knobs (OpenCLIP preferred; fallback to LAVIS if OpenCLIP unavailable)
+  clip:
+    model_name: ViT-L-14
+    pretrained: openai
+
+train:
+  epochs: 5
+  batch_size: 16 #32
+  lr: 2e-5
+  weight_decay: 0.05 #0.03
+
+  # Gradient accumulation (useful if GPU mem is tight)
+  accum_steps: 2 #4
+
+  # AMP + stability
+  amp: true
+  amp_dtype: fp16   # or bf16
+  grad_clip: 1.0
+
+  # Optim + schedule
+  optimizer:
+    name: adamw
+    betas: [0.9, 0.999]
+    eps: 6.2e-08 #1.2e-8
+    lr: 3.7e-05
+
+  scheduler:
+    name: cosine
+    warmup_ratio: 0.14 #0.08   # warmup_steps = ratio * total_steps (if warmup_steps not set)
+    # warmup_steps: 500
+    min_lr: 0.0
+
+  # Imbalance handling
+  class_weights: balanced
+  loss:
+    name: ce
+    label_smoothing: 0.06 #0.03
+
+  log_every: 500
+
+eval:
+  select_metric: acc
+  select_mode: max
+  report_metrics:
+    - f1_macro
+    - f1_weighted
+    - acc
+    - auroc_ovr_macro
+    - log_loss
+    - bacc
+    - precision_macro
+    - precision_weighted
+    - recall_macro
+    - recall_weighted
+    - loss
+    - sensitivity_macro
+    - specificity_macro
+    - mcc
+    - kappa
+
+  # used only for eval_multiclass
+  checkpoint: ""
+  split: val
+
+
+benchmark:
+  enabled: true
+  models: 
+    - name: BLIP2_OPT_2.7B
+      arch: blip2_opt
+      lavis_name: blip2_opt
+      model_type: pretrain_opt2.7b
+      train_qformer: true
+      train_vision: true
+      freeze_vit: false
+      unfreeze_vision_last_n: 1
+      pooling: mean
+      head_hidden: 512
+      activation: silu
+      dropout: 0.2 
+  
+    - name: BLIP2_OPT_6.7B
+      arch: blip2_opt
+      lavis_name: blip2_opt
+      model_type: pretrain_opt6.7b
+      train_qformer: true
+      train_vision: true
+      unfreeze_vision_last_n: 1
+      freeze_vit: false
+      pooling: mean
+      head_hidden: 512
+      activation: silu
+      dropout: 0.09 #0.2
+  
+    - name: BLIP2_T5_flant5xl_vitL
+      arch: blip2_t5
+      lavis_name: blip2_t5
+      model_type: pretrain_flant5xl_vitL
+      train_qformer: true
+      train_vision: true
+      unfreeze_vision_last_n: 3
+      freeze_vit: false
+      pooling: mean
+      head_hidden: 512
+      activation: silu
+      dropout: 0.09 #0.2  
+      
+    - name: BLIP2_feature_vitL
+      arch: blip2_feature_extractor
+      lavis_name: blip2_feature_extractor
+      model_type: pretrain_vitL
+      train_qformer: true
+      train_vision: true
+      freeze_vit: false
+      unfreeze_vision_last_n: 3
+      pooling: mean
+      head_hidden: 512
+      activation: silu
+      dropout: 0.09 #0.2
+      
+    
+    - name: CLIP_ViT-B-32
+      arch: clip
+      clip:
+        model_name: ViT-B-32
+        pretrained: "/scratch/ali95/open_clip_cache/CLIP-ViT-B-32-laion2B-s34B-b79K/open_clip_model.safetensors"   
+      pooling: cls
+      head_hidden: 512
+      activation: silu #gelu
+      dropout: 0.09 #0.2
+      
+    - name: CLIP_ViT-L-14
+      arch: clip
+      clip:
+        model_name: ViT-L-14
+        pretrained: "/scratch/ali95/open_clip_cache/CLIP-ViT-L-14-laion2B-s32B-b82K/open_clip_pytorch_model.safetensors"
+      pooling: cls
+      head_hidden: 512
+      activation: silu #gelu
+      dropout: 0.09 #0.2
+    
+  
+    - name: CLIP_RN50x16
+      arch: clip
+      clip:
+        model_name: RN50x16
+        pretrained: "/scratch/ali95/open_clip_cache/RN50x16/open_clip_model.safetensors"
+        input_size: 224
+      pooling: cls
+      head_hidden: 512
+      activation: silu #gelu
+      dropout: 0.09 #0.2
+  
+    - name: CLIP_RN50
+      arch: clip
+      clip:
+        model_name: RN50
+        # If Narval has no internet, also prefer local path after downloading on your PC
+        pretrained: "/scratch/ali95/open_clip_cache/RN50/open_clip_model.safetensors"
+      pooling: cls
+      head_hidden: 512
+      activation: silu #gelu
+      dropout: 0.09 #0.2

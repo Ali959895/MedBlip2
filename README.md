@@ -26,7 +26,7 @@ Medicine inherently involves integrating diverse data modalities, making multimo
 - NUMPY
 - PANDAS
 
-#Figures
+# Figures
 
 
 

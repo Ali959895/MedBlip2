@@ -68,9 +68,9 @@ Correct predictions are marked with a green check, while misclassified samples a
 by a red cross.
 
 ## Installation
-git clone https://anonymous.4open.science/status/MedBlip2-F370.git  
+git clone https://anonymous.4open.science/status/MedBlip2-F370.git  <br>
 
-cd MedBlip2  
+cd MedBlip2  <br>
 
 pip install -r requirements.txt
 ## Datasets

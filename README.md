@@ -1,4 +1,5 @@
 # Medical Vision–Language Models for Robust Disease Diagnosis
+This paper has been submitted for publication in PHAROS AI Factory for Medical Imaging & Healthcare (PHAROS-AIF-MIH) in conjunction with the IEEE Computer Vision and Pattern Recognition Conference (CVPR), 2026
 
 ## Abstract
 

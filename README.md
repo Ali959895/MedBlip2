@@ -43,25 +43,25 @@ are converted into soft prompt tokens and injected into the frozen
 LLM to enable instruction-guided medical inference.
 ## Comparison with State-of-the-Art
 <p align="center">
-  <img src="image/metrics.png" alt="metrics" width="800">
+  <img src="image/metrics.jpg" alt="metrics" width="800">
 </p>
 Table 1. Performance comparison across multiple evaluation metrics
 for gastrointestinal tract analysis.
 ## MedBLIP2 evaluation on the LC25000 dataset
 <p align="center">
-  <img src="image/LC25000.png" alt="LC25000" width="800">
+  <img src="image/LC25000.jpg" alt="LC25000" width="800">
 </p>
 Table 2. Predicted labels on LC25000 dataset. Each column represents
 the same representative histopathology image patch, while each row reports the prediction produced by different models.
 ## MedBLIP2 evaluation on the Kvasir  dataset
 <p align="center">
-  <img src="image/Kvasir.png" alt="Kvasir" width="800">
+  <img src="image/Kvasir.jpg" alt="Kvasir" width="800">
 </p>
 Table 3. Predicted labels for MedBLIP2 (2.7B, 6.7B) and baseline models compared to the ground-truth class (dyed-lifted-polyps, dyeless-
 polyps, normal-cecum, normal-pylorus, normal-z-line, polyps, ulcerative-colitis, and esophagitis).
 ## MedBLIP2 evaluation on the HAM10000  dataset
 <p align="center">
-  <img src="image/HAM10000.png" alt="HAM10000" width="800">
+  <img src="image/HAM10000.jpg" alt="HAM10000" width="800">
 </p>
 Table 4. Qualitative summary of predicted labels for representative HAM10000 samples. The reference row lists the ground-truth classes.
 Correct predictions are marked with a green check, while misclassified samples are represented by the incorrectly predicted class followed

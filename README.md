@@ -66,3 +66,24 @@ polyps, normal-cecum, normal-pylorus, normal-z-line, polyps, ulcerative-colitis,
 Table 4. Qualitative summary of predicted labels for representative HAM10000 samples. The reference row lists the ground-truth classes.
 Correct predictions are marked with a green check, while misclassified samples are represented by the incorrectly predicted class followed
 by a red cross.
+
+## Installation
+git clone https://github.com/Ali959895/MedBlip2.git
+cd MedBlip2
+pip install -r requirements.txt
+## Datasets
+- LC25000 
+- Kvasir
+- HAM10000
+
+## Training and Evaluation
+bash scripts/train_lc25000.sh
+bash scripts/train_kvasir.sh
+bash scripts/train_ham10000.sh
+## Citation
+@article{medblip2,
+  title={Medical Vision--Language Models for Robust Disease Diagnosis},
+  author={Anonymous},
+  year={2026}
+}
+

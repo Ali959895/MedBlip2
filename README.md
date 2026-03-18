@@ -31,9 +31,13 @@ Medicine inherently involves integrating diverse data modalities, making multimo
 <p align="center">
   <img src="image/Diagram.png" alt="MedBLIP2 architecture" width="800">
 </p>
-*Figure 1. MedBLIP2 architecture.*
+Figure 1. The overall architecture and workflow of our proposed vision-language model for medical image analysis.
 
 ## MedQFormer architecture
 <p align="center">
   <img src="image/MedQFormer.png" alt="MedBLIP2 architecture" width="800">
 </p>
+Figure 2. MedQFormer queries the frozen image encoder’s output
+embeddings to extract compact visual representations, which
+are converted into soft prompt tokens and injected into the frozen
+LLM to enable instruction-guided medical inference.

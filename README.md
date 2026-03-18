@@ -97,6 +97,7 @@ MedBlip2/
 ├── README.md          # project documentation
 └── requirements.txt   # Python dependencies
 
+```md
 ## Citation
 @article{medblip2,
   title={Medical Vision--Language Models for Robust Disease Diagnosis},

@@ -86,6 +86,9 @@ bash scripts/kvasir_finetuning_blip_blip2.sh
 bash scripts/ham10000_finetuning_blip_blip2.sh
 
 ## Project Structure
+## Project Structure
+
+```text
 MedBlip2/
 ├── configs/           # configuration files
 ├── image/             # figures used in the README

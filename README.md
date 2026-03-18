@@ -27,8 +27,8 @@ Medicine inherently involves integrating diverse data modalities, making multimo
 - PANDAS
 
 # Figures
-
+## MedBLIP2 architecture
 <p align="center">
   <img src="image/Diagram.png" alt="MedBLIP2 architecture" width="800">
 </p>
-*Figure 1. MedBLIP2 architecture.*
+

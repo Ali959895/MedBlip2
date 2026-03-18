@@ -68,13 +68,13 @@ Correct predictions are marked with a green check, while misclassified samples a
 by a red cross.
 
 ## Installation
-git clone https://github.com/Ali959895/MedBlip2.git
+git clone https://anonymous.4open.science/status/MedBlip2-F370.git
 cd MedBlip2
 pip install -r requirements.txt
 ## Datasets
-- LC25000 
-- Kvasir
-- HAM10000
+- LC25000  (https://www.kaggle.com/datasets/javaidahmadwani/lc25000)
+- Kvasir   (https://datasets.simula.no/kvasir/)
+- HAM10000 (https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000)
 
 ## Training and Evaluation
 bash scripts/train_lc25000.sh

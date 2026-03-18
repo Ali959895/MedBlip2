@@ -49,7 +49,7 @@ Table 1. Performance comparison across multiple evaluation metrics
 for gastrointestinal tract analysis.
 ## MedBLIP2 evaluation on the LC25000 dataset
 <p align="center">
-  <img src="image/LC25000.JPG" alt="LC25000" width="800">
+  <img src="image/LC2500.JPG" alt="LC25000" width="800">
 </p>
 Table 2. Predicted labels on LC25000 dataset. Each column represents
 the same representative histopathology image patch, while each row reports the prediction produced by different models.

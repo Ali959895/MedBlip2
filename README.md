@@ -68,8 +68,8 @@ Correct predictions are marked with a green check, while misclassified samples a
 by a red cross.
 
 ## Installation
-git clone https://anonymous.4open.science/status/MedBlip2-F370.git
-cd MedBlip2
+git clone https://anonymous.4open.science/status/MedBlip2-F370.git\\
+cd MedBlip2\\
 pip install -r requirements.txt
 ## Datasets
 - LC25000  (https://www.kaggle.com/datasets/javaidahmadwani/lc25000)

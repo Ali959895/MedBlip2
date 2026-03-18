@@ -41,3 +41,28 @@ Figure 2. MedQFormer queries the frozen image encoder’s output
 embeddings to extract compact visual representations, which
 are converted into soft prompt tokens and injected into the frozen
 LLM to enable instruction-guided medical inference.
+## Comparison with State-of-the-Art
+<p align="center">
+  <img src="image/metrics.png" alt="MedBLIP2 architecture" width="800">
+</p>
+Table 1. Performance comparison across multiple evaluation metrics
+for gastrointestinal tract analysis.
+## MedBLIP2 evaluation on the LC25000 dataset
+<p align="center">
+  <img src="image/LC2500.png" alt="MedBLIP2 architecture" width="800">
+</p>
+Table 2. Predicted labels on LC25000 dataset. Each column represents
+the same representative histopathology image patch, while each row reports the prediction produced by different models.
+## MedBLIP2 evaluation on the Kvasir  dataset
+<p align="center">
+  <img src="image/Kvasir.png" alt="MedBLIP2 architecture" width="800">
+</p>
+Table 3. Predicted labels for MedBLIP2 (2.7B, 6.7B) and baseline models compared to the ground-truth class (dyed-lifted-polyps, dyeless-
+polyps, normal-cecum, normal-pylorus, normal-z-line, polyps, ulcerative-colitis, and esophagitis).
+## MedBLIP2 evaluation on the HAM10000  dataset
+<p align="center">
+  <img src="image/HAM10000.png" alt="MedBLIP2 architecture" width="800">
+</p>
+Table 4. Qualitative summary of predicted labels for representative HAM10000 samples. The reference row lists the ground-truth classes.
+Correct predictions are marked with a green check, while misclassified samples are represented by the incorrectly predicted class followed
+by a red cross.

@@ -79,11 +79,11 @@ pip install -r requirements.txt
 - HAM10000 (https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000)
 
 ## Training and Evaluation
-bash scripts/train_lc25000.sh  
+bash scripts/lc25000_finetuning_blip_blip2.sh  
 
-bash scripts/train_kvasir.sh  
+bash scripts/kvasir_finetuning_blip_blip2.sh  
 
-bash scripts/train_ham10000.sh
+bash scripts/ham10000_finetuning_blip_blip2.sh
 ## Citation
 @article{medblip2,
   title={Medical Vision--Language Models for Robust Disease Diagnosis},

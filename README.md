@@ -75,7 +75,7 @@ cd MedBlip2  <br>
 pip install -r requirements.txt
 ## Datasets
 - LC25000  (https://www.kaggle.com/datasets/javaidahmadwani/lc25000)
-- [Kvasir]   (https://datasets.simula.no/kvasir/)
+- Kvasir   (https://www.kaggle.com/datasets/plhalvorsen/kvasir-v2-a-gastrointestinal-tract-dataset)
 - HAM10000 (https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000)
 
 ## Training and Evaluation

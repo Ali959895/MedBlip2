@@ -84,6 +84,16 @@ bash scripts/lc25000_finetuning_blip_blip2.sh
 bash scripts/kvasir_finetuning_blip_blip2.sh  
 
 bash scripts/ham10000_finetuning_blip_blip2.sh
+
+## Project Structure
+MedBlip2/
+├── configs/           # configuration files
+├── image/             # figures used in the README
+├── scripts/           # training/evaluation shell scripts
+├── src/               # Python source code
+├── .gitignore.txt     # git ignore rules
+├── README.md          # project documentation
+└── requirements.txt   # Python dependencies
 ## Citation
 @article{medblip2,
   title={Medical Vision--Language Models for Robust Disease Diagnosis},

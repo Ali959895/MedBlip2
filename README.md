@@ -1,11 +1,20 @@
 # Medical Vision–Language Models for Robust Disease Diagnosis
 This paper has been submitted for publication in PHAROS AI Factory for Medical Imaging & Healthcare (PHAROS-AIF-MIH) in conjunction with the IEEE Computer Vision and Pattern Recognition Conference (CVPR), 2026
 
-This repository implements MedBLIP2, a lightweight vision-language pretraining framework tailored for the medical domain:
+## Overview
+**MedBLIP2** is a lightweight medical vision-language framework built on BLIP-2 for robust disease diagnosis across multiple medical imaging domains.
 
-- **MedQFormer** for medical visual-text alignment
-- **Unified adaptation pipeline**
-- **Cross-dataset benchmark**
+This repository provides:
+- **MedQFormer-based adaptation**
+- **Benchmarking on LC25000, Kvasir, and HAM10000**
+- **Training, evaluation, and visualization scripts**
+- **Comparisons with BLIP, CLIP, and ResNet baselines**
+  
+## Highlights
+- **Medical-domain adaptation** of BLIP-2 for disease classification
+- **Unified benchmark** across histopathology, GI endoscopy, and dermoscopy
+- **Strong performance** with MedBLIP2-OPT-2.7B and MedBLIP2-OPT-6.7B
+- **Reproducible experimental pipeline**
 
 ## Abstract
 

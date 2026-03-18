@@ -17,5 +17,12 @@ Medicine inherently involves integrating diverse data modalities, making multimo
 - NUMPY
 - PANDAS
 
+## Overview
+**MedBLIP2** is a lightweight medical VLM for classification on **LC25000**, **Kvasir**, and **HAM10000**.
+
+## Key Contributions
+- **MedQFormer** for medical visual-text alignment
+- **Unified adaptation pipeline**
+- **Cross-dataset benchmark**
 
 

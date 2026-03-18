@@ -28,5 +28,7 @@ Medicine inherently involves integrating diverse data modalities, making multimo
 
 # Figures
 
-![MedBLIP2 architecture](image/MedQFormer.png)</p>
+<p align="center">
+  <img src="image/Diagram.png" alt="MedBLIP2 architecture" width="800">
+</p>
 

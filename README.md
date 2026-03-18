@@ -96,9 +96,10 @@ MedBlip2/
 ├── .gitignore.txt     # git ignore rules
 ├── README.md          # project documentation
 └── requirements.txt   # Python dependencies
-
-```md
+```
 ## Citation
+If you find this repository useful, please cite:
+
 @article{medblip2,
   title={Medical Vision--Language Models for Robust Disease Diagnosis},
   author={Anonymous},
